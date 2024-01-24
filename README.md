@@ -1,3 +1,42 @@
+# Test using CWSimulate
+
+To test the wasm module in a browser simulator follow these steps:
+
+1. Open the [cwsimulate](https://cwsimulate.terran.one/) tool 
+2. Build a release `cargo build --release`
+3. Copy the wasm file to the cwsimulate tool: `target/wasm32-unknown-unknown/release/first_cosmwasm_contract.wasm`
+4. Select the contract from the top side menu and click the three dots.
+5. Click on "Instantiate"
+6. Keep the wallet and funds unchanged, add a label for the instance, e.g. "MyCounterContract"
+7. In the `InstantiateMsg` field enter the following JSON payload and click "Instantiate" button 
+    ```
+    {
+        "count": 0
+    }
+    ```
+1. In the "Execute" field enter the following JSON payload and click "RUN" button.
+    ```
+    {
+        "increment": {}
+    }
+    ```
+1. In the "Query" field  enter the following JSON payload and click "RUN" button.
+   ```
+    {
+        "get_count": {}
+    }
+   ```
+1. Back in the "Execute" field again, enter the following JSON payload and click "RUN" button.
+    ```
+    {
+        "reset": {
+            "count": 99
+        }
+    }
+    ```
+
+The above is a very basic tool that at allows for manual interaction with your contract using Json messages.
+
 # CosmWasm Starter Pack
 
 This is a template to build smart contracts in Rust to run inside a
